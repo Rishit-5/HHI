@@ -19,7 +19,7 @@ export default function App() {
       url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
     />
 
-    <div style={{ padding: '10px' }}>
+    <div className="pl-4 pt-5">
       <ZoomController zoomLevel={zoomLevel} />
     </div>
 
