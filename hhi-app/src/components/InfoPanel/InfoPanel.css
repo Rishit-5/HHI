@@ -1,0 +1,116 @@
+.sidebar {
+  height: 100vh;
+  width: 0;
+  position: absolute;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  overflow-x: hidden;
+  word-wrap: normal;
+  padding: 20px 0;
+  padding-top: 60px;
+  transition: width 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+  font-family: "Roboto", sans-serif;
+  overflow-y: auto;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-visible {
+  width: 400px;
+}
+
+.closebtn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  color: #2a2a2a;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.closebtn:hover {
+  color: #007bff;
+}
+
+/* Styling for the logo image */
+.org_img {
+  width: 80%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.org_img:hover {
+  transform: scale(1.05);
+}
+
+/* Styling for the organization name */
+.org_name {
+  font-size: 1.8rem;
+  font-weight: 500;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+}
+
+/* Styling for the descriptive content */
+.org_desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Styling for the website link */
+.org_desc a {
+  color: #007bff;
+  text-decoration: none;
+  margin-bottom: 10px;
+  display: block;
+  text-align: center; /* Center the link */
+  transition: color 0.3s ease-in-out;
+}
+
+.org_desc a:hover {
+  color: #0056b3;
+}
+
+/* Styling for the descriptive blurb */
+.org_desc p {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-left: 4px solid #007bff;
+  margin: 10px 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* For Webkit Browsers */
+.sidebar::-webkit-scrollbar {
+  width: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background-color: #bbb;
+}
+
+/* For Firefox */
+.sidebar {
+  scrollbar-width: thin;
+  scrollbar-color: #ccc #f9f9f9;
+}
