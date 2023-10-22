@@ -11,6 +11,7 @@ import InfoPanel from "../InfoPanel/InfoPanel";
 import { stakeholders } from "../../data/stakeholders";
 import "leaflet/dist/leaflet.css";
 import { StakeholderInfo, Coordinates } from "../../types";
+import ZoomController from "../../ZoomController";
 
 const MarkersComponent: React.FC<{
   selectedStakeholder: StakeholderInfo | null;
@@ -96,9 +97,12 @@ const MapComponent: React.FC = () => {
     <MapContainer
       className="w-full h-full"
       center={[51.505, -0.09]}
-      zoom={13}
-      scrollWheelZoom={false}
+      zoom={12.6}
+      scrollWheelZoom={true}
+      zoomControl={false}
     >
+      <ZoomController zoomLevel={12.6} />
+
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
