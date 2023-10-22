@@ -12,7 +12,7 @@ export default function App() {
   return (
 
 
-  <MapContainer className="w-full h-full" center={[51.505, -0.09]} zoom={zoomLevel} scrollWheelZoom={false} zoomControl={false}>
+  <MapContainer className="w-full h-full" center={[51.505, -0.09]} zoom={zoomLevel} scrollWheelZoom={true} zoomControl={false}>
 
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
