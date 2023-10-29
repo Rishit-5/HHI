@@ -1,3 +1,5 @@
+"use client";
+
 import 'leaflet/dist/leaflet.css';
 
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
@@ -20,7 +22,7 @@ export default function App() {
 
     <TileLayer
       attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      url={`https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${process.env.STADIA_KEY}`}
+      url={`https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${import.meta.env.NEXT_STADIA_KEY}`}
     />
 
     <div className="absolute left-4 bottom-5 z-[1000]">
