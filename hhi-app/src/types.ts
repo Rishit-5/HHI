@@ -7,14 +7,14 @@ export interface ServedLocation {
 
 export interface StakeholderInfo {
   logo: string;
-  "Email Address": string;
-  "Organization Name": string;
-  "Headquarter Location": string;
-  "Headquarter Coordinates": Coordinates;
-  "Served Locations": Record<string, Coordinates>;
-  "Descriptive Blurb": string;
-  "Tags/themes": string[];
-  Website: string;
+  emailAddress: string;
+  organizationName: string;
+  headquarter: string;
+  headquarterCoordinates: Coordinates;
+  locationsServed: Record<string, Coordinates>;
+  description: string;
+  tags: string[];
+  website: string;
 }
 
 export interface InfoPanelProps {

@@ -5,52 +5,52 @@ import { StakeholderInfo } from "../types";
 export const stakeholders: StakeholderInfo[] = [
   {
     logo: logo,
-    "Email Address": "",
-    "Organization Name": "Economic Community for West African States (ECOWAS)",
-    "Headquarter Location": "Abuja, Nigeria",
-    "Headquarter Coordinates": [51.505, -0.09],
-    "Served Locations": {
+    emailAddress: "",
+    organizationName: "Economic Community for West African States (ECOWAS)",
+    headquarter: "Abuja, Nigeria",
+    headquarterCoordinates: [51.505, -0.09],
+    locationsServed: {
       Benin: [51.515, -0.08],
       "Burkina Faso": [51.52, -0.07],
       "Cabo Verde": [51.525, -0.06],
     },
-    "Descriptive Blurb":
+    description:
       "The aim of the Community is to promote co-operation and integration, leading to the establishment of an economic union in West Africa in order to raise the living standards of its peoples, and to maintain and enhance economic stability, foster relations-among Member States and contribute to the progress and development of the African continent.",
-    "Tags/themes": [
+    tags: [
       "West Africa",
       "conflict prevention",
       "peacekeeping",
       "governmental organization",
     ],
-    Website: "https://ecowas.int/",
+    website: "https://ecowas.int/",
   },
   {
     logo: "path/to/logo.png",
-    "Email Address": "sampleA@example.com",
-    "Organization Name": "Sample Organization A",
-    "Headquarter Location": "Washington, DC",
-    "Headquarter Coordinates": [51.49, -0.08],
-    "Served Locations": {
+    emailAddress: "sampleA@example.com",
+    organizationName: "Sample Organization A",
+    headquarter: "Washington, DC",
+    headquarterCoordinates: [51.49, -0.08],
+    locationsServed: {
       "Country X": [51.485, -0.08],
       "Community Y": [51.48, -0.09],
     },
-    "Descriptive Blurb": "Sample Organization A is focused on ...",
-    "Tags/themes": ["Healthcare", "Education"],
-    Website: "https://www.hotosm.org/",
+    description: "Sample Organization A is focused on ...",
+    tags: ["Healthcare", "Education"],
+    website: "https://www.hotosm.org/",
   },
   {
     logo: "path/to/logo.png",
-    "Email Address": "sampleB@example.com",
-    "Organization Name": "Sample Organization B",
-    "Headquarter Location": "City B, Country B",
-    "Headquarter Coordinates": [51.51, -0.1],
-    "Served Locations": {
+    emailAddress: "sampleB@example.com",
+    organizationName: "Sample Organization B",
+    headquarter: "City B, Country B",
+    headquarterCoordinates: [51.51, -0.1],
+    locationsServed: {
       "Country Z": [51.515, -0.11],
       "Community W": [51.52, -0.12],
     },
-    "Descriptive Blurb": "Sample Organization B specializes in ...",
-    "Tags/themes": ["Sustainability", "Environment"],
-    Website: "https://sampleB.org",
+    description: "Sample Organization B specializes in ...",
+    tags: ["Sustainability", "Environment"],
+    website: "https://sampleB.org",
   },
 ];
 
