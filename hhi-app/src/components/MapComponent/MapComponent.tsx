@@ -47,8 +47,8 @@ const MarkersComponent: React.FC<{
     <>
       {stakeholders.map((stakeholder) => (
         <Marker
-          key={stakeholder["Organization Name"]}
-          position={stakeholder["Headquarter Coordinates"]}
+          key={stakeholder["organizationName"]}
+          position={stakeholder["headquarterCoordinates"]}
           eventHandlers={{
             click: () => {
               if (selectedStakeholder === stakeholder) {
@@ -56,10 +56,10 @@ const MarkersComponent: React.FC<{
               } else {
                 setSelectedStakeholder(stakeholder);
                 const servedLocationsCoordinates = Object.values(
-                  stakeholder["Served Locations"]
+                  stakeholder["locationsServed"]
                 );
                 adjustView([
-                  stakeholder["Headquarter Coordinates"],
+                  stakeholder["headquarterCoordinates"],
                   ...servedLocationsCoordinates,
                 ]);
               }
@@ -69,7 +69,7 @@ const MarkersComponent: React.FC<{
       ))}
       {isViewAdjusted &&
         selectedStakeholder &&
-        Object.entries(selectedStakeholder["Served Locations"]).map(
+        Object.entries(selectedStakeholder["locationsServed"]).map(
           ([name, coordinates]) => (
             <CircleMarker
               key={name}
@@ -97,12 +97,10 @@ const MapComponent: React.FC = () => {
     <MapContainer
       className="w-full h-full"
       center={[51.505, -0.09]}
-      zoom={12.6}
+      zoom={13}
       scrollWheelZoom={true}
       zoomControl={false}
     >
-      <ZoomController zoomLevel={12.6} />
-
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -116,6 +114,7 @@ const MapComponent: React.FC = () => {
         isVisible={!!selectedStakeholder}
         onClose={() => setSelectedStakeholder(null)}
       />
+      <ZoomController zoomLevel={13} />
     </MapContainer>
   );
 };
