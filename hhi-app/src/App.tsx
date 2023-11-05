@@ -1,13 +1,8 @@
 import React from "react";
-import MapComponent from "./components/MapComponent/MapComponent";
 
-import L from "leaflet";
+import Map from "components/Map/Map";
+
 import "leaflet/dist/leaflet.css";
-
-const customIcon = L.icon({
-  iconUrl: "marker.svg",
-  iconSize: [32, 32],
-});
 
 const App: React.FC = () => {
   const stadiaAPIKey = import.meta.env.VITE_STADIA_KEY;
@@ -22,7 +17,7 @@ const App: React.FC = () => {
         />
       </div>
 
-      <MapComponent apiKey={stadiaAPIKey} customIcon={customIcon} />
+      <Map apiKey={stadiaAPIKey} />
     </div>
   );
 };

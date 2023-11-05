@@ -1,7 +1,9 @@
 import React from "react";
-import "./InfoPanel.css";
-import { InfoPanelProps } from "../../types";
 import { useMap } from "react-leaflet";
+
+import { InfoPanelProps } from "types";
+
+import "./InfoPanel.css";
 
 const InfoPanel: React.FC<InfoPanelProps> = ({ data, isVisible, onClose }) => {
   const map = useMap();
