@@ -74,7 +74,7 @@ const MarkersComponent: React.FC<{
       ))}
       {isViewAdjusted &&
         selectedStakeholder &&
-        Object.entries(selectedstakeholder.locationsServed).map(
+        Object.entries(selectedStakeholder.locationsServed).map(
           ([name, coordinates]) => (
             <CircleMarker
               key={name}
