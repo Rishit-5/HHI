@@ -26,12 +26,12 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ data, isVisible, onClose }) => {
             &times;
           </span>
           {data.map((stakeholder) => (
-            <div key={stakeholder["emailAddress"]}>
-              <div className="org_name">{stakeholder["organizationName"]}</div>
+            <div key={stakeholder.emailAddress}>
+              <div className="org_name">{stakeholder.organizationName}</div>
               <img
                 className="org_img"
                 src={stakeholder.logo}
-                alt={`${stakeholder["organizationName"]} logo`}
+                alt={`${stakeholder.organizationName} logo`}
               />
               <div className="org_desc">
                 <a
@@ -41,14 +41,14 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ data, isVisible, onClose }) => {
                 >
                   Visit Website
                 </a>
-                <p>Email: {stakeholder["emailAddress"]}</p>{" "}
-                <p>Headquarter: {stakeholder["headquarter"]}</p>
+                <p>Email: {stakeholder.emailAddress}</p>{" "}
+                <p>Headquarter: {stakeholder.headquarter}</p>
                 <p>
                   Countries/Communities Served:{" "}
-                  {Object.keys(stakeholder["locationsServed"]).join(", ")}
+                  {Object.keys(stakeholder.locationsServed).join(", ")}
                 </p>
-                <p>{stakeholder["description"]}</p>
-                <p>Tags: {stakeholder["tags"].join(", ")}</p>
+                <p>{stakeholder.description}</p>
+                <p>Tags: {stakeholder.tags.join(", ")}</p>
               </div>
             </div>
           ))}

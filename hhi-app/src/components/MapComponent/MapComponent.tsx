@@ -52,8 +52,8 @@ const MarkersComponent: React.FC<{
     <>
       {stakeholders.map((stakeholder) => (
         <Marker
-          key={stakeholder["organizationName"]}
-          position={stakeholder["headquarterCoordinates"]}
+          key={stakeholder.organizationName}
+          position={stakeholder.headquarterCoordinates}
           eventHandlers={{
             click: () => {
               if (selectedStakeholder === stakeholder) {
@@ -61,10 +61,10 @@ const MarkersComponent: React.FC<{
               } else {
                 setSelectedStakeholder(stakeholder);
                 const servedLocationsCoordinates = Object.values(
-                  stakeholder["locationsServed"]
+                  stakeholder.locationsServed
                 );
                 adjustView([
-                  stakeholder["headquarterCoordinates"],
+                  stakeholder.headquarterCoordinates,
                   ...servedLocationsCoordinates,
                 ]);
               }
@@ -74,7 +74,7 @@ const MarkersComponent: React.FC<{
       ))}
       {isViewAdjusted &&
         selectedStakeholder &&
-        Object.entries(selectedStakeholder["locationsServed"]).map(
+        Object.entries(selectedstakeholder.locationsServed).map(
           ([name, coordinates]) => (
             <CircleMarker
               key={name}
