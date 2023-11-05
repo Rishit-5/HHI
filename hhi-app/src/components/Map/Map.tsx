@@ -34,8 +34,7 @@ const Map: React.FC<MapProps> = ({ apiKey }) => {
         setSelectedStakeholder={setSelectedStakeholder}
       />
       <InfoPanel
-        data={selectedStakeholder ? [selectedStakeholder] : []}
-        isVisible={!!selectedStakeholder}
+        stakeholder={selectedStakeholder}
         onClose={() => setSelectedStakeholder(null)}
       />
 

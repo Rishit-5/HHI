@@ -13,7 +13,7 @@ function ZoomController(props: ZoomControllerProps) {
   const map = useMap();
 
   return (
-    <div className="leaflet-control leaflet-bar absolute right-4 bottom-5 z-[1000] z-100">
+    <div className="leaflet-control leaflet-bar absolute right-4 bottom-5 z-[1000]">
       <a
         className="leaflet-control-zoom-in"
         title={zoomInTitle}

@@ -17,10 +17,3 @@ export interface StakeholderInfo {
   website: string;
 }
 
-export interface InfoPanelProps {
-  data: StakeholderInfo[];
-  isVisible: boolean;
-  onClose: () => void;
-}
-
-export {};
