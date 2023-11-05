@@ -13,6 +13,11 @@ import "leaflet/dist/leaflet.css";
 import { StakeholderInfo, Coordinates } from "../../types";
 import ZoomController from "../../ZoomController";
 
+interface MapComponentProps {
+  apiKey: string;
+  customIcon: L.Icon;
+}
+
 const MarkersComponent: React.FC<{
   selectedStakeholder: StakeholderInfo | null;
   setSelectedStakeholder: React.Dispatch<
@@ -89,7 +94,7 @@ const MarkersComponent: React.FC<{
   );
 };
 
-const MapComponent: React.FC = () => {
+const MapComponent: React.FC<MapComponentProps> = ({ apiKey, customIcon }) => {
   const [selectedStakeholder, setSelectedStakeholder] =
     useState<StakeholderInfo | null>(null);
 
@@ -103,7 +108,7 @@ const MapComponent: React.FC = () => {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        url={`https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${apiKey}`}
       />
       <MarkersComponent
         selectedStakeholder={selectedStakeholder}
@@ -114,7 +119,14 @@ const MapComponent: React.FC = () => {
         isVisible={!!selectedStakeholder}
         onClose={() => setSelectedStakeholder(null)}
       />
-      <ZoomController zoomLevel={13} />
+
+      <ZoomController zoomLevel={12.6} />
+
+      <Marker position={[51.525, -0.09]} icon={customIcon}>
+        <Popup>
+          A pretty CSS3 popup. <br /> Easily customizable.
+        </Popup>
+      </Marker>
     </MapContainer>
   );
 };
