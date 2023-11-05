@@ -1,4 +1,4 @@
-import { useMap } from 'react-leaflet';
+import { useMap } from "react-leaflet";
 
 interface ZoomControllerProps {
   zoomInTitle?: string;
@@ -13,7 +13,7 @@ function ZoomController(props: ZoomControllerProps) {
   const map = useMap();
 
   return (
-    <div className="leaflet-control leaflet-control-zoom leaflet-bar">
+    <div className="leaflet-control leaflet-bar absolute top-2 right-2 z-100">
       <a
         className="leaflet-control-zoom-in"
         title={zoomInTitle}
@@ -44,17 +44,17 @@ function ZoomController(props: ZoomControllerProps) {
           map.setZoom(zoomLevel);
           e.preventDefault();
         }} // circle arrow symbol
-      > 
-        &#x21ba; 
-      </a> 
+      >
+        &#x21ba;
+      </a>
     </div>
   );
 }
 
 ZoomController.defaultProps = {
-  zoomInTitle: 'Zoom in',
-  zoomOutTitle: 'Zoom out',
-  zoomResetTitle: 'Reset zoom',
+  zoomInTitle: "Zoom in",
+  zoomOutTitle: "Zoom out",
+  zoomResetTitle: "Reset zoom",
 };
 
 export default ZoomController;
