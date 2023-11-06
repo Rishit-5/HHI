@@ -1,20 +1,12 @@
-"use client";
+import React from "react";
+
+import Map from "components/Map/Map";
 
 import "leaflet/dist/leaflet.css";
 
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+const App: React.FC = () => {
+  const stadiaAPIKey = import.meta.env.VITE_STADIA_KEY;
 
-import L from "leaflet";
-import ZoomController from "./ZoomController.tsx";
-
-const zoomLevel = 12.6; //default zoom level
-
-const customIcon = L.icon({
-  iconUrl: "marker.svg",
-  iconSize: [32, 32],
-});
-
-export default function App() {
   return (
     <div className="relative h-full">
       <div className="absolute top-0 left-0 right-0 z-[1000] flex justify-end p-5 header-drop">
@@ -25,30 +17,9 @@ export default function App() {
         />
       </div>
 
-      <MapContainer
-        className="w-full h-full"
-        center={[51.505, -0.09]}
-        zoom={zoomLevel}
-        scrollWheelZoom={true}
-        zoomControl={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url={`https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${
-            import.meta.env.VITE_STADIA_KEY
-          }`}
-        />
-
-        <div className="absolute left-4 bottom-5 z-[1000]">
-          <ZoomController zoomLevel={zoomLevel} />
-        </div>
-
-        <Marker position={[51.505, -0.09]} icon={customIcon}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer>
+      <Map apiKey={stadiaAPIKey} />
     </div>
   );
-}
+};
+
+export default App;
