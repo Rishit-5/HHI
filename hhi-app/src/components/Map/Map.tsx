@@ -40,7 +40,7 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
         onClose={() => setSelectedStakeholder(null)}
       />
 
-      <ZoomController zoomLevel={12.6} />
+      <ZoomController zoomLevel={3} />
     </MapContainer>
   );
 };
