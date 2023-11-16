@@ -59,7 +59,7 @@ const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setS
       ))}
       {isViewAdjusted &&
         selectedStakeholder &&
-        selectedStakeholder.locationsServed.forEach(
+        selectedStakeholder.locationsServed.map(
           (locationName, index) => (
             <CircleMarker
               key={locationName}
