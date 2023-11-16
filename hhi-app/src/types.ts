@@ -1,4 +1,7 @@
-export type Coordinates = [number, number];
+export interface Coordinates {
+  lat: number;
+  lng: number;
+}
 
 export interface ServedLocation {
   name: string;
@@ -6,14 +9,15 @@ export interface ServedLocation {
 }
 
 export interface StakeholderInfo {
-  logo: string;
   emailAddress: string;
   organizationName: string;
-  headquarter: string;
-  headquarterCoordinates: Coordinates;
-  locationsServed: Record<string, Coordinates>;
+  logo: string;
   description: string;
-  tags: string[];
   website: string;
+  headquarter: string;
+  locationsServed: string[];
+  tags: string[];
+  headquarterCoordinates: Coordinates;
+  locationServedCoordinates: Coordinates[];
 }
 

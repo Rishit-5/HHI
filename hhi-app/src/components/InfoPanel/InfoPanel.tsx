@@ -53,7 +53,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
               <div>Headquarter: {stakeholder.headquarter}</div>
               <div>
                 Countries/Communities Served:{" "}
-                {Object.keys(stakeholder.locationsServed).join(", ")}
+                {stakeholder.locationsServed.join(", ")}
               </div>
               <div>{stakeholder.description}</div>
               <div>Tags: {stakeholder.tags.join(", ")}</div>
