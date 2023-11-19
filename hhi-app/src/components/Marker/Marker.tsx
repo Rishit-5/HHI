@@ -26,9 +26,17 @@ const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setS
     };
   }, [map]);
 
-  const adjustView = (coordinates: Coordinates[]) => {
-    const bounds = coordinates.map((coord) => [coord.lat, coord.lng] as LatLngTuple);
-    map.flyToBounds(bounds, { padding: [150, 150] });
+  const adjustView = (stakeholder: StakeholderInfo) => {
+    if (stakeholder.global) {
+      map.setView([0, 0], 2);
+    } else {
+      // If the stakeholder has specific locations
+      const bounds = [
+        stakeholder.headquarterCoordinates,
+        ...stakeholder.locationsServedCoordinates,
+      ].map((coord) => [coord.lat, coord.lng] as LatLngTuple);
+      map.flyToBounds(bounds, { padding: [150, 150], duration: 1, easeLinearity: 0.5 });
+    }
     setIsViewAdjusted(false);
   };
 
@@ -48,11 +56,8 @@ const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setS
                 setSelectedStakeholder(null);
               } else {
                 setSelectedStakeholder(stakeholder);
-                adjustView([
-                  stakeholder.headquarterCoordinates,
-                  ...stakeholder.locationsServedCoordinates,
-                ]);
-              }6
+                adjustView(stakeholder);
+              }
             },
           }}
         />
