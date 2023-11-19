@@ -2,7 +2,7 @@ import L, { LatLngTuple } from 'leaflet';
 import { useState, useEffect } from "react";
 import { useMap, Popup, Marker as LeafletMarker, CircleMarker } from "react-leaflet";
 
-import { StakeholderInfo, Coordinates } from "types";
+import { StakeholderInfo} from "types";
 
 interface MarkerProps {
   stakeholders: StakeholderInfo[];
