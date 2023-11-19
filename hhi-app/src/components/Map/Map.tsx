@@ -11,17 +11,18 @@ import ZoomController from "ZoomController";
 
 interface MapProps {
   apiKey: string;
+  stakeholders: StakeholderInfo[];
 }
 
-const Map: React.FC<MapProps> = ({ apiKey }) => {
+const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
   const [selectedStakeholder, setSelectedStakeholder] =
     useState<StakeholderInfo | null>(null);
 
   return (
     <MapContainer
       className="w-full h-full"
-      center={[51.505, -0.09]}
-      zoom={13}
+      center={[20, 0]}
+      zoom={3}
       scrollWheelZoom={true}
       zoomControl={false}
     >
@@ -30,6 +31,7 @@ const Map: React.FC<MapProps> = ({ apiKey }) => {
         url={`https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${apiKey}`}
       />
       <Marker
+        stakeholders={stakeholders}
         selectedStakeholder={selectedStakeholder}
         setSelectedStakeholder={setSelectedStakeholder}
       />
@@ -38,7 +40,7 @@ const Map: React.FC<MapProps> = ({ apiKey }) => {
         onClose={() => setSelectedStakeholder(null)}
       />
 
-      <ZoomController zoomLevel={12.6} />
+      <ZoomController zoomLevel={3} />
     </MapContainer>
   );
 };

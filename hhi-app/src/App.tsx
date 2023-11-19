@@ -1,11 +1,36 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useEffect } from "react";
 import Map from "components/Map/Map";
-
 import "leaflet/dist/leaflet.css";
+import { getDatabase, ref } from "firebase/database";
+import { initializeApp } from "firebase/app";
+import { getData } from "api";
+import { StakeholderInfo } from "types";
 
 const App: React.FC = () => {
+  const app = initializeApp({
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+    databaseURL: import.meta.env.VITE_FIREBASE_DATABASE_URL,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  });
+  const dbRef = ref(getDatabase(app))
+
   const stadiaAPIKey = import.meta.env.VITE_STADIA_KEY;
+
+  const [stakeholders, setStakeholders] = useState<StakeholderInfo[]>([]);
+
+  useEffect(() => {
+    getData(dbRef)
+      .then(setStakeholders)
+      .catch((error) => {
+          console.error(error)
+      })
+  }, [dbRef])
 
   return (
     <div className="relative h-full">
@@ -17,7 +42,7 @@ const App: React.FC = () => {
         />
       </div>
 
-      <Map apiKey={stadiaAPIKey} />
+      <Map apiKey={stadiaAPIKey} stakeholders={stakeholders} />
     </div>
   );
 };
