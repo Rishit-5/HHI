@@ -31,12 +31,12 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
           </span>
           <div key={stakeholder.emailAddress}>
             <div className="mb-3 text-2xl font-semibold text-center text-gray-700">
-              {stakeholder.organizationName}
+              {stakeholder.name}
             </div>
             <img
               className="mx-auto mb-5 transform w-80 hover:scale-105"
               src={stakeholder.logo}
-              alt={`${stakeholder.organizationName} logo`}
+              alt={`${stakeholder.name} logo`}
             />
             <div className="mb-5 text-lg leading-6 text-gray-500">
               <a

@@ -36,7 +36,7 @@ const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setS
     <>
       {stakeholders.map((stakeholder) => (
         <LeafletMarker
-          key={stakeholder.organizationName}
+          key={stakeholder.name}
           position={stakeholder.headquarterCoordinates}
           icon={L.icon({
             iconUrl: "marker.svg",

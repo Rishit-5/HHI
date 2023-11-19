@@ -9,13 +9,14 @@ export interface ServedLocation {
 }
 
 export interface StakeholderInfo {
-  emailAddress: string;
-  organizationName: string;
+  name: string;
+  email: string;
+  website: string;
   logo: string;
   description: string;
-  website: string;
   headquarter: string;
   locationsServed: string[];
+  global: boolean;
   tags: string[];
   headquarterCoordinates: Coordinates;
   locationServedCoordinates: Coordinates[];
