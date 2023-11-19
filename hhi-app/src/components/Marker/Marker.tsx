@@ -50,7 +50,7 @@ const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setS
                 setSelectedStakeholder(stakeholder);
                 adjustView([
                   stakeholder.headquarterCoordinates,
-                  ...stakeholder.locationServedCoordinates,
+                  ...stakeholder.locationsServedCoordinates,
                 ]);
               }6
             },
@@ -63,7 +63,7 @@ const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setS
           (locationName, index) => (
             <CircleMarker
               key={locationName}
-              center={selectedStakeholder.locationServedCoordinates[index]}
+              center={selectedStakeholder.locationsServedCoordinates[index]}
               radius={15}
               fillColor="blue"
               color="blue"

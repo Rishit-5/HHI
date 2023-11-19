@@ -19,6 +19,6 @@ export interface StakeholderInfo {
   global: boolean;
   tags: string[];
   headquarterCoordinates: Coordinates;
-  locationServedCoordinates: Coordinates[];
+  locationsServedCoordinates: Coordinates[];
 }
 
