@@ -10,7 +10,7 @@ export interface ServedLocation {
 
 export interface StakeholderInfo {
   name: string;
-  email: string;
+  contact: string;
   website: string;
   logo: string;
   description: string;
