@@ -1,9 +1,9 @@
 import React from "react";
 import { useMap } from "react-leaflet";
 
-import { StakeholderInfo } from "types";
+import { Stakeholder } from "types";
 interface InfoPanelProps {
-  stakeholder: StakeholderInfo | null;
+  stakeholder: Stakeholder | null;
   onClose: () => void;
 }
 
@@ -53,7 +53,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
               <div>Headquarter: {stakeholder.headquarter}</div>
               <div>
                 Countries/Communities Served:{" "}
-                {stakeholder.locationsServed.join(", ")}
+                {stakeholder.locationsServed?.join(", ")}
               </div>
               <div>{stakeholder.description}</div>
               <div>Tags: {stakeholder.tags.join(", ")}</div>
