@@ -6,7 +6,7 @@ import {
 } from "react-leaflet";
 import InfoPanel from "components/InfoPanel/InfoPanel";
 import Marker from "components/Marker/Marker";
-import { StakeholderInfo } from "types";
+import { Stakeholder } from "types";
 import ZoomController from "components/Controls/ZoomController";
 declare const L: any;
 import LControlSearch from 'leaflet-search';
