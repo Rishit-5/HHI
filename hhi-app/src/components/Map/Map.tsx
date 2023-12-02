@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { OpenStreetMapProvider, GeoSearchControl, SearchControl } from 'leaflet-geosearch'
-import { useMap } from "react-leaflet";
 import {
   MapContainer,
   TileLayer,
+  useMap
 } from "react-leaflet";
 import InfoPanel from "components/InfoPanel/InfoPanel";
 import Marker from "components/Marker/Marker";
 import { StakeholderInfo } from "types";
 import ZoomController from "components/Controls/ZoomController";
-import SearchBar from "components/Controls/SearchBar";
-import { triggerAsyncId } from "async_hooks";
+declare const L: any;
+import LControlSearch from 'leaflet-search';
+// import 'leaflet-search';
+
 
 interface MapProps {
   apiKey: string;
@@ -21,6 +23,44 @@ interface MapProps {
 const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
   const [selectedStakeholder, setSelectedStakeholder] =
     useState<StakeholderInfo | null>(null);
+
+
+    function MarkerSearchBar() {
+      const map = useMap(); //here use useMap hook
+      var markersLayer = new L.LayerGroup();	//layer contain searched elements
+
+      useEffect(() => {
+        map.addLayer(markersLayer);
+
+        var controlSearch = new LControlSearch({
+          position:'topleft',		
+          layer: markersLayer,
+          initial: false,
+          zoom: 12,
+          marker: false
+          // collapsed: false
+        });
+      
+        map.addControl( controlSearch );
+
+        // Loop through stakeholders and add markers to the markersLayer
+        stakeholders.forEach((stakeholder) => {
+          const { name, headquarterCoordinates } = stakeholder;
+          const { lat, lng } = headquarterCoordinates;
+
+          const marker = new L.Marker(new L.LatLng(lat, lng), { title: name, opacity: 0});
+          markersLayer.addLayer(marker);
+          
+        });
+        return () => {
+          map.removeControl(controlSearch)
+        };
+      }, []);
+
+      return null;
+    }
+
+    
 
     function GeoSearchBar() {
       const map = useMap(); //here use useMap hook
@@ -41,6 +81,8 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
     
       return null;
     }
+
+
 
   return (
     <MapContainer
@@ -64,10 +106,7 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
         stakeholder={selectedStakeholder}
         onClose={() => setSelectedStakeholder(null)}
       />
-      {/* <SearchBar 
-        mLayer={markersLayer}
-      /> */}
-      <GeoSearchBar />
+      <MarkerSearchBar />
 
       <ZoomController zoomLevel={3} />
     </MapContainer>
