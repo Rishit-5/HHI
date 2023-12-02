@@ -1,6 +1,4 @@
 import { ControlOptions, Layer } from "leaflet";
-import { useState, useEffect } from "react";
-import { OpenStreetMapProvider, GeoSearchControl } from 'leaflet-geosearch'
 import { useMap } from "react-leaflet";
 import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-search";
@@ -12,7 +10,7 @@ interface SBProps {
   }
 
 // Function that creates and returns our routing machine instance:
-const createSearchBar = (controlOptions: ControlOptions, props: SBProps) => {
+const createSearchBar = (_controlOptions: ControlOptions, _props: SBProps) => {
     const map = useMap();
     
     var markersLayer = new L.LayerGroup();	//layer contain searched elements

@@ -1,7 +1,4 @@
 import { useMap } from "react-leaflet";
-import React, { useEffect, useState, useRef } from "react";
-import L from "leaflet";
-import { createControlComponent } from "@react-leaflet/core";
 import "leaflet-search";
 
 

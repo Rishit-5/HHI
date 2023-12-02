@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { OpenStreetMapProvider, GeoSearchControl, SearchControl } from 'leaflet-geosearch'
 import {
   MapContainer,
   TileLayer,
@@ -57,28 +56,6 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
         };
       }, []);
 
-      return null;
-    }
-
-    
-
-    function GeoSearchBar() {
-      const map = useMap(); //here use useMap hook
-    
-      useEffect(() => {
-        const provider = new OpenStreetMapProvider();
-    
-        const searchControl = GeoSearchControl({
-          provider
-        });
-    
-        map.addControl(searchControl);
-    
-        return () => {
-          map.removeControl(searchControl)
-        };
-      }, []);
-    
       return null;
     }
 
