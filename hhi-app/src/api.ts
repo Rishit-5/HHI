@@ -1,11 +1,12 @@
 import { child, get, DatabaseReference } from 'firebase/database'
-import { StakeholderInfo } from 'types'
+import { DataSchema, Stakeholder } from 'types'
+import { parse } from 'valibot';
 
-export async function getData(dbRef: DatabaseReference): Promise<StakeholderInfo[]> {
+export async function getData(dbRef: DatabaseReference): Promise<Stakeholder[]> {
   const snapshot = await get(child(dbRef, "/"))
   if (snapshot.exists()) {
     try {
-      return snapshot.val()
+      return parse(DataSchema, snapshot.val(), { abortEarly: true});
     } catch (e) {
       console.error('Data failed to parse\n', e)
       return []
