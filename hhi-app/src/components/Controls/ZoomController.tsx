@@ -1,4 +1,13 @@
 import { useMap } from "react-leaflet";
+import React, { useEffect, useState, useRef } from "react";
+import L from "leaflet";
+import { createControlComponent } from "@react-leaflet/core";
+import "leaflet-search";
+
+
+
+
+
 
 interface ZoomControllerProps {
   zoomInTitle?: string;
@@ -11,6 +20,27 @@ function ZoomController(props: ZoomControllerProps) {
   const { zoomInTitle, zoomResetTitle, zoomOutTitle, zoomLevel } = props;
 
   const map = useMap();
+
+  // const searchRef = useRef(null)
+
+  // //creating search-bar instance
+  // useEffect(() => {
+  //   // Check For the map instance:
+  //     if (!map) return 
+  //     if (map) {
+  //     // Assign Control to React Ref:
+  //       searchRef.current = new L.Control.Search({
+  //         position:'topright',		
+  //         layer: markersLayer,
+  //         initial: false,
+  //         zoom: 12,
+  //         marker: false
+  //       });
+  
+  //      // Save instance to state:
+  //       map.addControl(searchRef.current);
+  //     }
+  //   }, [map])
 
   return (
     <div className="leaflet-control leaflet-bar absolute right-4 bottom-5 z-[1000]">
