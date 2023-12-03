@@ -18,27 +18,6 @@ function ZoomController(props: ZoomControllerProps) {
 
   const map = useMap();
 
-  // const searchRef = useRef(null)
-
-  // //creating search-bar instance
-  // useEffect(() => {
-  //   // Check For the map instance:
-  //     if (!map) return 
-  //     if (map) {
-  //     // Assign Control to React Ref:
-  //       searchRef.current = new L.Control.Search({
-  //         position:'topright',		
-  //         layer: markersLayer,
-  //         initial: false,
-  //         zoom: 12,
-  //         marker: false
-  //       });
-  
-  //      // Save instance to state:
-  //       map.addControl(searchRef.current);
-  //     }
-  //   }, [map])
-
   return (
     <div className="leaflet-control leaflet-bar absolute right-4 bottom-5 z-[1000]">
       <a
