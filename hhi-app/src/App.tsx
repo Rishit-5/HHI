@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css";
 import { getDatabase, ref } from "firebase/database";
 import { initializeApp } from "firebase/app";
 import { getData } from "api";
-import { StakeholderInfo } from "types";
+import { Stakeholder } from "types";
 
 const App: React.FC = () => {
   const app = initializeApp({
@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
   const stadiaAPIKey = import.meta.env.VITE_STADIA_KEY;
 
-  const [stakeholders, setStakeholders] = useState<StakeholderInfo[]>([]);
+  const [stakeholders, setStakeholders] = useState<Stakeholder[]>([]);
 
   useEffect(() => {
     getData(dbRef)

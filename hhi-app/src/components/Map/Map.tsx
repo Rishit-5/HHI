@@ -16,13 +16,13 @@ import LControlSearch from 'leaflet-search';
 
 interface MapProps {
   apiKey: string;
-  stakeholders: StakeholderInfo[];
+  stakeholders: Stakeholder[];
 }
 
 
 const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
   const [selectedStakeholder, setSelectedStakeholder] =
-    useState<StakeholderInfo | null>(null);
+    useState<Stakeholder | null>(null);
 
 
     function MarkerSearchBar() {

@@ -2,12 +2,12 @@ import L, { LatLngTuple } from 'leaflet';
 import { useState, useEffect } from "react";
 import { useMap, Popup, Marker as LeafletMarker, CircleMarker } from "react-leaflet";
 
-import { StakeholderInfo, Coordinates } from "types";
+import { Stakeholder} from "types";
 
 interface MarkerProps {
-  stakeholders: StakeholderInfo[];
-  selectedStakeholder: StakeholderInfo | null;
-  setSelectedStakeholder: React.Dispatch<React.SetStateAction<StakeholderInfo | null>>;
+  stakeholders: Stakeholder[];
+  selectedStakeholder: Stakeholder | null;
+  setSelectedStakeholder: React.Dispatch<React.SetStateAction<Stakeholder | null>>;
 }
 
 const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setSelectedStakeholder }) => {
@@ -26,9 +26,17 @@ const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setS
     };
   }, [map]);
 
-  const adjustView = (coordinates: Coordinates[]) => {
-    const bounds = coordinates.map((coord) => [coord.lat, coord.lng] as LatLngTuple);
-    map.flyToBounds(bounds, { padding: [150, 150] });
+  const adjustView = (stakeholder: Stakeholder) => {
+    if (stakeholder.global) {
+      map.setView([0, 0], 2);
+    } else {
+      // If the stakeholder has specific locations
+      const bounds = [
+        stakeholder.headquarterCoordinates,
+        ...stakeholder.locationsServedCoordinates ? stakeholder.locationsServedCoordinates : [],
+      ].map((coord) => [coord.lat, coord.lng] as LatLngTuple);
+      map.flyToBounds(bounds, { padding: [150, 150], duration: 1, easeLinearity: 0.5 });
+    }
     setIsViewAdjusted(false);
   };
 
@@ -48,33 +56,35 @@ const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setS
                 setSelectedStakeholder(null);
               } else {
                 setSelectedStakeholder(stakeholder);
-                adjustView([
-                  stakeholder.headquarterCoordinates,
-                  ...stakeholder.locationsServedCoordinates,
-                ]);
-              }6
+                adjustView(stakeholder);
+              }
             },
           }}
         />
       ))}
       {isViewAdjusted &&
         selectedStakeholder &&
-        selectedStakeholder.locationsServed.map(
-          (locationName, index) => (
-            <CircleMarker
-              key={locationName}
-              center={selectedStakeholder.locationsServedCoordinates[index]}
-              radius={15}
-              fillColor="blue"
-              color="blue"
-              weight={1}
-              opacity={1}
-              fillOpacity={0.6}
-            >
-              <Popup>{locationName}</Popup>
-            </CircleMarker>
-          )
-        )}
+        selectedStakeholder.locationsServed?.map(
+          (locationName, index) => {
+            if (selectedStakeholder.locationsServedCoordinates)
+            {
+              return (
+                <CircleMarker
+                key={locationName}
+                center={selectedStakeholder.locationsServedCoordinates[index]}
+                radius={15}
+                fillColor="blue"
+                color="blue"
+                weight={1}
+                opacity={1}
+                fillOpacity={0.6}
+              >
+                <Popup>{locationName}</Popup>
+              </CircleMarker>
+              )}
+          }
+        )
+      }
     </>
   );
 };
