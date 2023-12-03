@@ -1,9 +1,9 @@
 import React from "react";
 import { useMap } from "react-leaflet";
 
-import { StakeholderInfo } from "types";
+import { Stakeholder } from "types";
 interface InfoPanelProps {
-  stakeholder: StakeholderInfo | null;
+  stakeholder: Stakeholder | null;
   onClose: () => void;
 }
 
@@ -29,7 +29,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
           <span className="absolute text-2xl text-gray-700 duration-300 cursor-pointer top-6 right-6 transition-color hover:text-blue-500" onClick={onClose}>
             &times;
           </span>
-          <div key={stakeholder.email}>
+          <div key={stakeholder.contact}>
             <div className="mb-3 text-2xl font-semibold text-center text-gray-700">
               {stakeholder.name}
             </div>
@@ -49,11 +49,11 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
               </a>
             </div>
             <div className="flex flex-col gap-2 text-lg">
-              <div>Email: {stakeholder.email}</div>
+              <div>Email: {stakeholder.contact}</div>
               <div>Headquarter: {stakeholder.headquarter}</div>
               <div>
                 Countries/Communities Served:{" "}
-                {stakeholder.locationsServed.join(", ")}
+                {stakeholder.locationsServed?.join(", ")}
               </div>
               <div>{stakeholder.description}</div>
               <div>Tags: {stakeholder.tags.join(", ")}</div>

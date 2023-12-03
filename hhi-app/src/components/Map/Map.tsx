@@ -6,17 +6,17 @@ import {
 
 import InfoPanel from "components/InfoPanel/InfoPanel";
 import Marker from "components/Marker/Marker";
-import { StakeholderInfo } from "types";
+import { Stakeholder } from "types";
 import ZoomController from "ZoomController";
 
 interface MapProps {
   apiKey: string;
-  stakeholders: StakeholderInfo[];
+  stakeholders: Stakeholder[];
 }
 
 const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
   const [selectedStakeholder, setSelectedStakeholder] =
-    useState<StakeholderInfo | null>(null);
+    useState<Stakeholder | null>(null);
 
   return (
     <MapContainer
