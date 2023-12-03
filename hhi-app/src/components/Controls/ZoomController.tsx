@@ -1,4 +1,10 @@
 import { useMap } from "react-leaflet";
+import "leaflet-search";
+
+
+
+
+
 
 interface ZoomControllerProps {
   zoomInTitle?: string;
