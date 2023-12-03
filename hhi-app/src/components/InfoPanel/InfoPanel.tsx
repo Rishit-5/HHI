@@ -18,6 +18,13 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
     map.scrollWheelZoom.enable();
   };
 
+  const extractDriveFileId = (link: string): string | null => {
+    const match = link.match(/id=([a-zA-Z0-9_-]+)/);
+    return match ? match[1] : null;
+  };
+
+  const driveFileId = stakeholder?.logo ? extractDriveFileId(stakeholder.logo) : null;
+
   return (
     <div
       className={`${stakeholder ? "w-[400px] px-6" : "w-0"} fixed left-0 h-screen py-10 box-border overflow-y-auto bg-white shadow-md z-[1000] bg-opacity-70 transition-all  duration-400`}
@@ -33,11 +40,15 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
             <div className="mb-3 text-2xl font-semibold text-center text-gray-700">
               {stakeholder.name}
             </div>
-            <img
-              className="mx-auto mb-5 transform w-80 hover:scale-105"
-              src={stakeholder.logo}
-              alt={`${stakeholder.name} logo`}
-            />
+
+            {driveFileId && (
+              <img
+                className="mx-auto mb-5 transform w-80 hover:scale-105"
+                src={`https://drive.google.com/uc?id=${driveFileId}`}
+                alt={`${stakeholder.name} logo`}
+              />
+            )}
+
             <div className="mb-5 text-lg leading-6 text-gray-500">
               <a
                 href={stakeholder.website}
