@@ -66,7 +66,7 @@ const Marker: React.FC<MarkerProps> = ({ stakeholders, selectedStakeholder, setS
         selectedStakeholder.locationsServed?.map((locationName, index) => {
           if (selectedStakeholder.locationsServedCoordinates) {
             return (
-              <CircleMarker key={locationName} center={selectedStakeholder.locationsServedCoordinates[index]} radius={15} fillColor="blue" color="blue" weight={1} opacity={1} fillOpacity={0.6}>
+              <CircleMarker key={locationName} center={selectedStakeholder.locationsServedCoordinates[index]} radius={10} fillColor="black" color="black" weight={1} opacity={1} fillOpacity={0.9}>
                 <Popup>{locationName}</Popup>
               </CircleMarker>
             )
