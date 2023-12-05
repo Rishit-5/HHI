@@ -36,9 +36,6 @@ const StakeholderSchema = object(
   },
   [
     custom((input) => {
-      console.log(input.global)
-      console.log(input.global == false)
-
       return !(input.global == false && input.locationsServed == undefined)
     }, 'If global is false, locationsServed must be defined'),
   ]

@@ -27,31 +27,56 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
 
   return (
     <div
-      className={`${stakeholder ? 'w-[400px] px-6' : 'w-0'} duration-400 fixed left-0 z-[1000] box-border h-screen overflow-y-auto bg-white bg-opacity-70 py-10 shadow-md  transition-all`}
+      className={`${
+        stakeholder ? 'w-[400px]' : 'w-0'
+      } duration-400 !font-metropolis fixed left-0 z-[1000] box-border h-screen cursor-default overflow-y-auto bg-white bg-opacity-80 shadow-md transition-all duration-100`}
       onMouseEnter={disableZoom}
       onMouseLeave={enableZoom}
     >
       {stakeholder && (
         <>
-          <span className="transition-color hover:text-blue-500 absolute right-6 top-6 cursor-pointer text-2xl text-gray-700 duration-300" onClick={onClose}>
+          <span className="absolute right-6 top-6 h-4 w-4 cursor-pointer text-center text-2xl leading-4 text-black-900 transition delay-75 ease-in-out hover:scale-125" onClick={onClose}>
             &times;
           </span>
-          <div key={stakeholder.contact}>
-            <div className="mb-3 text-center text-2xl font-semibold text-gray-700">{stakeholder.name}</div>
 
-            {driveFileId && <img className="mx-auto mb-5 w-80 transform hover:scale-105" src={`https://drive.google.com/uc?id=${driveFileId}`} alt={`${stakeholder.name} logo`} />}
-
-            <div className="mb-5 text-lg leading-6 text-gray-500">
-              <a href={stakeholder.website} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 transition-color mb-2 block text-center no-underline duration-300">
-                Visit Website
+          <div key={stakeholder.contact} className="px-6 py-10">
+            <div className="mb-4 ">
+              <a
+                href={stakeholder.website}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-gradient-to-r from-black-900 to-black-600 bg-[length:0_0.1em] bg-[position:0_100%] bg-no-repeat text-2xl font-bold !text-black-700 transition-all duration-100 hover:bg-[length:100%_0.1em]"
+              >
+                {stakeholder.name}
               </a>
             </div>
-            <div className="flex flex-col gap-2 text-lg">
-              <div>Email: {stakeholder.contact}</div>
-              <div>Headquarter: {stakeholder.headquarter}</div>
-              <div>Countries/Communities Served: {stakeholder.locationsServed?.join(', ')}</div>
-              <div>{stakeholder.description}</div>
-              <div>Tags: {stakeholder.tags.join(', ')}</div>
+            {driveFileId && <img className="mx-auto mb-5 w-80" src={`https://drive.google.com/uc?id=${driveFileId}`} alt={`${stakeholder.name} logo`} />}
+            <div className="mb-6 text-sm text-black-800">{stakeholder.description}</div>
+            <div className="mb-4 font-bold text-black-800">
+              HEADQUARTERS: <span className="text-sm font-normal">{stakeholder.headquarter}</span>
+            </div>
+            <div className="mb-4">
+              <span className="font-bold text-black-800">LOCATIONS SERVED:</span>
+              <div className="ml-2 mt-2">
+                {stakeholder.locationsServed?.map((location) => (
+                  <span key={location} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">
+                    {location}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div className="mb-4 font-bold text-black-800">
+              CONTACT: <span className="text-sm font-normal">{stakeholder.contact}</span>
+            </div>
+            <div className="mb-4">
+              <span className="font-bold text-black-800">TAGS:</span>
+              <div className="ml-2 mt-2">
+                {stakeholder.tags?.map((tag) => (
+                  <span key={tag} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </>

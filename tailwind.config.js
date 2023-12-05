@@ -42,7 +42,10 @@ export default {
           '900': '#801b30',
           '950': '#470a15',
         }
-      }
+      },
+      fontFamily: {
+        metropolis: ['Metropolis', 'sans-serif'],
+      },
     },
   },
   plugins: [],
