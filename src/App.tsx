@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import Map from "components/Map/Map";
-import "leaflet/dist/leaflet.css";
-import { getDatabase, ref } from "firebase/database";
-import { initializeApp } from "firebase/app";
-import { getData } from "api";
-import { Stakeholder } from "types";
+import React, { useState } from 'react'
+import { useEffect } from 'react'
+import Map from 'components/Map/Map'
+import 'leaflet/dist/leaflet.css'
+import { getDatabase, ref } from 'firebase/database'
+import { initializeApp } from 'firebase/app'
+import { getData } from 'api'
+import { Stakeholder } from 'types'
 
 const App: React.FC = () => {
   const app = initializeApp({
@@ -16,35 +16,31 @@ const App: React.FC = () => {
     storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
     appId: import.meta.env.VITE_FIREBASE_APP_ID,
-    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
-  });
+    measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID,
+  })
   const dbRef = ref(getDatabase(app))
 
-  const stadiaAPIKey = import.meta.env.VITE_STADIA_KEY;
+  const stadiaAPIKey = import.meta.env.VITE_STADIA_KEY
 
-  const [stakeholders, setStakeholders] = useState<Stakeholder[]>([]);
+  const [stakeholders, setStakeholders] = useState<Stakeholder[]>([])
 
   useEffect(() => {
     getData(dbRef)
       .then(setStakeholders)
       .catch((error) => {
-          console.error(error)
+        console.error(error)
       })
   }, [dbRef])
 
   return (
     <div className="relative h-full">
-      <div className="absolute top-0 left-0 right-0 z-[1000] flex justify-end p-5 header-drop">
-        <img
-          src="att-logo.png"
-          alt="Harvard Logo"
-          className="h-20 filter drop-shadow invert"
-        />
+      <div className=" header-drop absolute left-0 right-0 top-0 z-[1000] flex justify-end p-5">
+        <img src="att-logo.png" alt="Harvard Logo" className="h-20 drop-shadow invert filter" />
       </div>
 
       <Map apiKey={stadiaAPIKey} stakeholders={stakeholders} />
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

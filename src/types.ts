@@ -1,13 +1,13 @@
-import { Input, array, boolean, custom, number, object, optional, string } from 'valibot';
+import { Input, array, boolean, custom, number, object, optional, string } from 'valibot'
 
 export interface Coordinates {
-  lat: number;
-  lng: number;
+  lat: number
+  lng: number
 }
 
 export interface ServedLocation {
-  name: string;
-  coordinates: Coordinates;
+  name: string
+  coordinates: Coordinates
 }
 
 const StakeholderSchema = object(
@@ -23,27 +23,27 @@ const StakeholderSchema = object(
     tags: array(string()),
     headquarterCoordinates: object({
       lat: number(),
-      lng: number()
+      lng: number(),
     }),
-    locationsServedCoordinates: optional(array(object({
-      lat: number(),
-      lng: number()
-    }))),
+    locationsServedCoordinates: optional(
+      array(
+        object({
+          lat: number(),
+          lng: number(),
+        })
+      )
+    ),
   },
   [
-    custom(
-      input => {
-        console.log(input.global)
-        console.log(input.global == false)
+    custom((input) => {
+      console.log(input.global)
+      console.log(input.global == false)
 
-        return !(input.global == false && input.locationsServed == undefined)
-      }, 
-      "If global is false, locationsServed must be defined"
-    ),
+      return !(input.global == false && input.locationsServed == undefined)
+    }, 'If global is false, locationsServed must be defined'),
   ]
 )
 
 export const DataSchema = array(StakeholderSchema)
 
 export type Stakeholder = Input<typeof StakeholderSchema>
-
