@@ -4,6 +4,7 @@ import { Stakeholder } from 'types'
 import L from 'leaflet'
 import SearchControl from 'components/Controls/SearchControl'
 import InfoPanelControl from 'components/Controls/InfoPanelControl'
+import ZoomControl from 'components/Controls/ZoomControl'
 
 interface MapProps {
   apiKey: string
@@ -45,6 +46,7 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
 
       <InfoPanelControl stakeholder={selectedStakeholder} onClose={() => setSelectedStakeholder(null)} />
       <SearchControl layerRef={markersLayer} />
+      <ZoomControl zoomLevel={3} />
     </MapContainer>
   )
 }
