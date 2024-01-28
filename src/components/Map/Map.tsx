@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import { LayerGroup, MapContainer, TileLayer, Marker as LeafletMarker } from 'react-leaflet'
 import { Stakeholder } from 'types'
 import L from 'leaflet'
-import SearchControl from 'components/SearchControl/SearchControl'
+import SearchControl from 'components/Controls/SearchControl'
 import InfoPanelControl from 'components/Controls/InfoPanelControl'
 
 interface MapProps {
