@@ -1,7 +1,6 @@
 import L, { LatLngTuple } from 'leaflet'
 import { useState, useEffect, forwardRef } from 'react'
 import { useMap, Popup, Marker as LeafletMarker, CircleMarker, LayerGroup } from 'react-leaflet'
-
 import { Stakeholder } from 'types'
 
 interface StakeholderLayerProps {
