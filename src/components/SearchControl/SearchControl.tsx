@@ -7,7 +7,7 @@ interface SearchControlProps {
   layerRef: React.MutableRefObject<any>
 }
 
-export default function SearchControl({ layerRef }: SearchControlProps) {
+const SearchControl: React.FC<SearchControlProps> = ({ layerRef }) => {
   const map = useMap()
 
   useEffect(() => {
@@ -31,3 +31,5 @@ export default function SearchControl({ layerRef }: SearchControlProps) {
 
   return null
 }
+
+export default SearchControl
