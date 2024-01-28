@@ -1,9 +1,9 @@
 import React, { useState, useRef } from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import { Stakeholder } from 'types'
-import SearchControl from 'components/controls/SearchControl'
-import InfoPanelControl from 'components/controls/InfoPanelControl'
-import ZoomControl from 'components/controls/ZoomControl'
+import SearchControl from 'components/controls/SearchControlT'
+import InfoPanelControl from 'components/controls/InfoPanelControlT'
+import ZoomControl from 'components/controls/ZoomControlT'
 import StakeholderLayer from './layers/StakeholderLayer'
 
 interface MapProps {
