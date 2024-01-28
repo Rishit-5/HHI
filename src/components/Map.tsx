@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react'
-import { LayerGroup, MapContainer, TileLayer, Marker as LeafletMarker } from 'react-leaflet'
+import { MapContainer, TileLayer } from 'react-leaflet'
 import { Stakeholder } from 'types'
-import L from 'leaflet'
 import SearchControl from 'components/Controls/SearchControl'
 import InfoPanelControl from 'components/Controls/InfoPanelControl'
 import ZoomControl from 'components/Controls/ZoomControl'
+import StakeholderLayer from './StakeholderLayer'
 
 interface MapProps {
   apiKey: string
@@ -21,28 +21,7 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url={`https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${apiKey}`}
       />
-      <LayerGroup ref={markersLayer}>
-        {stakeholders.map((stakeholder) => (
-          <LeafletMarker
-            key={stakeholder.name}
-            title={stakeholder.name}
-            position={stakeholder.headquarterCoordinates}
-            icon={L.icon({
-              iconUrl: 'marker.svg',
-              iconSize: [32, 32],
-            })}
-            eventHandlers={{
-              click: () => {
-                if (selectedStakeholder === stakeholder) {
-                  setSelectedStakeholder(null)
-                } else {
-                  setSelectedStakeholder(stakeholder)
-                }
-              },
-            }}
-          />
-        ))}
-      </LayerGroup>
+      <StakeholderLayer stakeholders={stakeholders} selectedStakeholder={selectedStakeholder} setSelectedStakeholder={setSelectedStakeholder} ref={markersLayer} />
 
       <InfoPanelControl stakeholder={selectedStakeholder} onClose={() => setSelectedStakeholder(null)} />
       <SearchControl layerRef={markersLayer} />
