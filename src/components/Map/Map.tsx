@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { LayerGroup, MapContainer, TileLayer, Marker as LeafletMarker, useMap } from 'react-leaflet'
-import InfoPanel from 'components/InfoPanel/InfoPanel'
-import Marker from 'components/Marker/Marker'
+import React, { useState, useRef } from 'react'
+import { LayerGroup, MapContainer, TileLayer, Marker as LeafletMarker } from 'react-leaflet'
 import { Stakeholder } from 'types'
-import ZoomController from 'components/Controls/ZoomController'
-declare const L: any
+import L from 'leaflet'
 import SearchControl from 'components/SearchControl/SearchControl'
-// import 'leaflet-search';
 
 interface MapProps {
   apiKey: string
