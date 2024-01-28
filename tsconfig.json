@@ -9,6 +9,9 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
+    /* Allow uppercasing of files */
+    "forceConsistentCasingInFileNames": false,
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -21,7 +24,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
