@@ -3,6 +3,7 @@ import { LayerGroup, MapContainer, TileLayer, Marker as LeafletMarker } from 're
 import { Stakeholder } from 'types'
 import L from 'leaflet'
 import SearchControl from 'components/SearchControl/SearchControl'
+import InfoPanelControl from 'components/Controls/InfoPanelControl'
 
 interface MapProps {
   apiKey: string
@@ -41,6 +42,8 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
           />
         ))}
       </LayerGroup>
+
+      <InfoPanelControl stakeholder={selectedStakeholder} onClose={() => setSelectedStakeholder(null)} />
       <SearchControl layerRef={markersLayer} />
     </MapContainer>
   )
