@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
-import Map from 'components/Map/Map'
+import Map from 'components/Map'
 import 'leaflet/dist/leaflet.css'
 import { getDatabase, ref } from 'firebase/database'
 import { initializeApp } from 'firebase/app'

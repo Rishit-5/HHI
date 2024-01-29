@@ -1,14 +1,14 @@
 import { useMap } from 'react-leaflet'
 import 'leaflet-search'
 
-interface ZoomControllerProps {
+interface ZoomControlProps {
   zoomInTitle?: string
   zoomOutTitle?: string
   zoomResetTitle?: string
   zoomLevel: number
 }
 
-function ZoomController(props: ZoomControllerProps) {
+function ZoomControl(props: ZoomControlProps) {
   const { zoomInTitle, zoomResetTitle, zoomOutTitle, zoomLevel } = props
 
   const map = useMap()
@@ -52,10 +52,10 @@ function ZoomController(props: ZoomControllerProps) {
   )
 }
 
-ZoomController.defaultProps = {
+ZoomControl.defaultProps = {
   zoomInTitle: 'Zoom in',
   zoomOutTitle: 'Zoom out',
   zoomResetTitle: 'Reset zoom',
 }
 
-export default ZoomController
+export default ZoomControl

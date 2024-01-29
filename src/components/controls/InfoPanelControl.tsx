@@ -2,12 +2,12 @@ import React from 'react'
 import { useMap } from 'react-leaflet'
 
 import { Stakeholder } from 'types'
-interface InfoPanelProps {
+interface InfoPanelControlProps {
   stakeholder: Stakeholder | null
   onClose: () => void
 }
 
-const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
+const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClose }) => {
   const map = useMap()
 
   const disableZoom = () => {
@@ -29,7 +29,7 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
     <div
       className={`${
         stakeholder ? 'w-[400px]' : 'w-0'
-      } duration-400 !font-metropolis fixed left-0 z-[1000] box-border h-screen cursor-default overflow-y-auto bg-white bg-opacity-80 shadow-md transition-all duration-100`}
+      } duration-400 fixed left-0 z-[1000] box-border h-screen cursor-default overflow-y-auto bg-white bg-opacity-80 !font-metropolis shadow-md transition-all duration-100`}
       onMouseEnter={disableZoom}
       onMouseLeave={enableZoom}
     >
@@ -85,4 +85,4 @@ const InfoPanel: React.FC<InfoPanelProps> = ({ stakeholder, onClose }) => {
   )
 }
 
-export default InfoPanel
+export default InfoPanelControl
