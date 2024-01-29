@@ -44,6 +44,7 @@ const StakeholderLayer = forwardRef<any, StakeholderLayerProps>(({ stakeholders,
         {stakeholders.map((stakeholder) => (
           <LeafletMarker
             key={stakeholder.name}
+            title={stakeholder.name}
             position={stakeholder.headquarterCoordinates}
             icon={L.icon({
               iconUrl: 'marker.svg',
