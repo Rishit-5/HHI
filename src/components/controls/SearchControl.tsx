@@ -18,9 +18,14 @@ const SearchControl: React.FC<SearchControlProps> = ({ layerRef }) => {
         initial: false,
         zoom: 12,
         marker: false,
-        // collapsed: false
+        autoCollapse: true, // Auto collapse search control on result select
       })
 
+      // Listen for the search:locationfound event
+      searchControl.on('search:locationfound', (e: any) => {
+        // Simulate a click on the marker when a location is found
+        e.layer.fire('click');
+      });
       map.addControl(searchControl)
 
       return () => {

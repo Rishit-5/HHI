@@ -47,8 +47,8 @@ const StakeholderLayer = forwardRef<any, StakeholderLayerProps>(({ stakeholders,
             title={stakeholder.name}
             position={stakeholder.headquarterCoordinates}
             icon={L.icon({
-              iconUrl: 'marker.svg',
-              iconSize: [32, 32],
+              iconUrl: selectedStakeholder === stakeholder ? 'selected-marker.svg' : 'marker.svg',
+              iconSize: selectedStakeholder === stakeholder ? [40, 40] : [32, 32], // Adjust the sizes as needed
             })}
             eventHandlers={{
               click: () => {
