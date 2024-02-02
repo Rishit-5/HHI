@@ -16,8 +16,9 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
   const [selectedTags, setSelectedTags] = useState<string[]>([])
 
   useEffect(() => {
-    setTags([...new Set(stakeholders.map((s) => s.tags).flat())])
-    setSelectedTags(tags)
+    const allTags = [...new Set(stakeholders.map((s) => s.tags).flat())]
+    setTags(allTags)
+    setSelectedTags(allTags)
   }, [stakeholders])
 
   useEffect(() => {
