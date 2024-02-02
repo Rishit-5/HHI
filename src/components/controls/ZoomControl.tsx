@@ -39,7 +39,7 @@ function ZoomControl(props: ZoomControlProps) {
           -
         </a>
         <a
-          className="leaflet-control-zoom-out"
+          className="leaflet-control-zoom-out pt-[2px]"
           title={zoomResetTitle}
           role="button"
           onClick={(e) => {

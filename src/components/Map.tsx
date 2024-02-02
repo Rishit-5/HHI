@@ -5,6 +5,7 @@ import StakeholderLayer from 'components/layers/StakeholderLayer'
 import SearchControl from 'components/controls/SearchControl'
 import InfoPanelControl from 'components/controls/InfoPanelControl'
 import ZoomControl from 'components/controls/ZoomControl'
+import TagControl from './controls/TagControl'
 
 interface MapProps {
   apiKey: string
@@ -24,8 +25,10 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
       <StakeholderLayer stakeholders={stakeholders} selectedStakeholder={selectedStakeholder} setSelectedStakeholder={setSelectedStakeholder} ref={markersLayer} />
 
       <InfoPanelControl stakeholder={selectedStakeholder} onClose={() => setSelectedStakeholder(null)} />
-      <ZoomControl zoomLevel={3} />
+
       <SearchControl layerRef={markersLayer} />
+      <TagControl stakeholders={stakeholders} layerRef={markersLayer} />
+      <ZoomControl zoomLevel={3} />
     </MapContainer>
   )
 }
