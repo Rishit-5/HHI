@@ -22,7 +22,7 @@ const SearchControl: React.FC<SearchControlProps> = ({ layerRef }) => {
       })
 
       // Listen for the search:locationfound event
-      searchControl.on('search:locationfound', (e) => {
+      searchControl.on('search:locationfound', (e: React.MouseEvent) => {
         // Simulate a click on the marker when a location is found
         e.layer.fire('click');
       });
