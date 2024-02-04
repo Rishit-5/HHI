@@ -13,6 +13,7 @@ const SearchControl: React.FC<SearchControlProps> = ({ layerRef }) => {
   useEffect(() => {
     if (layerRef.current) {
       const searchControl = new LControlSearch({
+        textPlaceholder: 'Search Stakeholders...',
         position: 'topleft',
         layer: layerRef.current,
         initial: false,
@@ -24,8 +25,8 @@ const SearchControl: React.FC<SearchControlProps> = ({ layerRef }) => {
       // Listen for the search:locationfound event
       searchControl.on('search:locationfound', (e: any) => {
         // Simulate a click on the marker when a location is found
-        e.layer.fire('click');
-      });
+        e.layer.fire('click')
+      })
       map.addControl(searchControl)
 
       return () => {
