@@ -35,7 +35,7 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
     >
       {stakeholder && (
         <>
-          <span className="absolute right-6 top-6 h-4 w-4 cursor-pointer text-center text-2xl leading-4 text-black-900 transition delay-75 ease-in-out hover:scale-125" onClick={onClose}>
+          <span className="absolute w-4 h-4 text-2xl leading-4 text-center transition ease-in-out delay-75 cursor-pointer right-6 top-6 text-black-900 hover:scale-125" onClick={onClose}>
             &times;
           </span>
 
@@ -50,16 +50,16 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
                 {stakeholder.name}
               </a>
             </div>
-            {driveFileId && <img className="mx-auto mb-5 w-80" src={`https://drive.google.com/uc?id=${driveFileId}`} alt={`${stakeholder.name} logo`} />}
+            {driveFileId && <img className="mx-auto mb-5 w-80" src={`https://drive.google.com/thumbnail?id=${driveFileId}&sz=w1000`} alt={`${stakeholder.name} logo`} />}
             <div className="mb-6 text-sm text-black-800">{stakeholder.description}</div>
             <div className="mb-4 font-bold text-black-800">
               HEADQUARTERS: <span className="text-sm font-normal">{stakeholder.headquarter}</span>
             </div>
             <div className="mb-4">
               <span className="font-bold text-black-800">LOCATIONS SERVED:</span>
-              <div className="ml-2 mt-2">
+              <div className="mt-2 ml-2">
                 {stakeholder.locationsServed?.map((location) => (
-                  <span key={location} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">
+                  <span key={location} className="inline-block px-3 py-1 mb-2 mr-2 font-semibold rounded-full bg-black-100 text-black-700">
                     {location}
                   </span>
                 ))}
@@ -70,9 +70,9 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
             </div>
             <div className="mb-4">
               <span className="font-bold text-black-800">TAGS:</span>
-              <div className="ml-2 mt-2">
+              <div className="mt-2 ml-2">
                 {stakeholder.tags?.map((tag) => (
-                  <span key={tag} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">
+                  <span key={tag} className="inline-block px-3 py-1 mb-2 mr-2 font-semibold rounded-full bg-black-100 text-black-700">
                     {tag}
                   </span>
                 ))}

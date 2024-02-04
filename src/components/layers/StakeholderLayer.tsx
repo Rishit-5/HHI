@@ -30,9 +30,10 @@ const StakeholderLayer = forwardRef<any, StakeholderLayerProps>(({ stakeholders,
       map.setView([0, 0], 2)
     } else {
       // If the stakeholder has specific locations
-      const bounds = [stakeholder.headquarterCoordinates, ...(stakeholder.locationsServedCoordinates ? stakeholder.locationsServedCoordinates : [])].map(
-        (coord) => [coord.lat, coord.lng] as LatLngTuple
-      )
+      const bounds = [
+        stakeholder.headquarterCoordinates,
+        ...(stakeholder.locationsServedCoordinates ? stakeholder.locationsServedCoordinates : []),
+      ].map((coord) => [coord.lat, coord.lng] as LatLngTuple)
       map.flyToBounds(bounds, { padding: [150, 150], duration: 1, easeLinearity: 0.5 })
     }
     setIsViewAdjusted(false)
@@ -69,7 +70,16 @@ const StakeholderLayer = forwardRef<any, StakeholderLayerProps>(({ stakeholders,
           selectedStakeholder.locationsServed?.map((locationName, index) => {
             if (selectedStakeholder.locationsServedCoordinates) {
               return (
-                <CircleMarker key={locationName} center={selectedStakeholder.locationsServedCoordinates[index]} radius={10} fillColor="black" color="black" weight={1} opacity={1} fillOpacity={0.9}>
+                <CircleMarker
+                  key={locationName}
+                  center={selectedStakeholder.locationsServedCoordinates[index]}
+                  radius={10}
+                  fillColor="black"
+                  color="black"
+                  weight={1}
+                  opacity={1}
+                  fillOpacity={0.9}
+                >
                   <Popup>{locationName}</Popup>
                 </CircleMarker>
               )
