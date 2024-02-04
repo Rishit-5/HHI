@@ -13,7 +13,7 @@ const SearchControl: React.FC<SearchControlProps> = ({ layerRef }) => {
   useEffect(() => {
     if (layerRef.current) {
       const searchControl = new LControlSearch({
-        textPlaceholder: 'Search Stakeholders...',
+        textPlaceholder: 'Search Stakeholders by name...',
         position: 'topleft',
         layer: layerRef.current,
         initial: false,
