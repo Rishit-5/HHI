@@ -2,6 +2,8 @@ import React from 'react'
 import { useMap } from 'react-leaflet'
 
 import { Stakeholder } from 'types'
+import ExternalLinkSvg from 'assets/external_link.svg'
+
 interface InfoPanelControlProps {
   stakeholder: Stakeholder | null
   onClose: () => void
@@ -45,9 +47,10 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
                 href={stakeholder.website}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gradient-to-r from-black-900 to-black-600 bg-[length:0_0.1em] bg-[position:0_100%] bg-no-repeat text-2xl font-bold !text-black-700 transition-all duration-100 hover:bg-[length:100%_0.1em]"
+                className="inline-flex items-center bg-gradient-to-r from-black-900 to-black-600 bg-[length:0_0.1em] bg-[position:0_100%] bg-no-repeat text-2xl font-bold !text-black-700 transition-all duration-100 hover:bg-[length:100%_0.1em]"
               >
-                {stakeholder.name}
+                <span>{stakeholder.name}</span>
+                <img src={ExternalLinkSvg} alt="link" className="ml-2 h-5" />
               </a>
             </div>
             {driveFileId && <img className="mx-auto mb-5 w-80" src={`https://drive.google.com/uc?id=${driveFileId}`} alt={`${stakeholder.name} logo`} />}
