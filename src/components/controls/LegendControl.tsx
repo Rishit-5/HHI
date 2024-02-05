@@ -1,7 +1,7 @@
 import React from 'react';
 
 interface LegendControlProps {
-    selectedStakeholder: boolean;
+    selectedStakeholder: any;
 }
 
 const LegendControl: React.FC<LegendControlProps> = ({ selectedStakeholder }) => {
