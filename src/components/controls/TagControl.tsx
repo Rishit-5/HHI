@@ -14,6 +14,8 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
   const dropdownRef = useRef<HTMLDivElement>(null)
   const [tags, setTags] = useState<string[]>([])
   const [selectedTags, setSelectedTags] = useState<string[]>([])
+  // must remove marker because setting layer opacity/interactivity does not prevent onclick
+  const [removedMarkers, setRemovedMarkers] = useState<L.Marker[]>([])
 
   useEffect(() => {
     const allTags = [...new Set(stakeholders.map((s) => s.tags).flat())]
@@ -26,15 +28,22 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
       // names of all stakeholders with at least one tag in selectedTags
       const viewableStakeholderNames = stakeholders.filter((s) => s.tags.some((t) => selectedTags.includes(t))).map((s) => s.name)
 
+      // add all previously removed markers
+      removedMarkers.forEach((m) => m.addTo(layerRef.current))
+
+      // get new list of removed markers
+      let markersToRemove: L.Marker[] = []
       layerRef.current.eachLayer((layer: any) => {
         if (layer instanceof L.Marker && layer.options.title != undefined) {
-          if (viewableStakeholderNames.includes(layer.options.title)) {
-            layer.setOpacity(1)
-          } else {
-            layer.setOpacity(0)
+          if (!viewableStakeholderNames.includes(layer.options.title)) {
+            markersToRemove.push(layer)
           }
         }
       })
+
+      // remove markers
+      markersToRemove.forEach((m) => layerRef.current.removeLayer(m))
+      setRemovedMarkers(markersToRemove)
     }
   }, [selectedTags])
 
@@ -61,7 +70,7 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
 
   return (
     <Control prepend position="topleft">
-      <div className="relative rounded leaflet-bar font-metropolis">
+      <div className="leaflet-bar relative rounded font-metropolis">
         <a
           className="leaflet-control-zoom-in rounded pt-[2px]"
           title={'Tags'}
@@ -77,11 +86,11 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
         {isDropdownVisible && (
           <div
             ref={dropdownRef}
-            className="box-border absolute top-0 w-40 bg-white border-2 rounded border-black- left-10 border-opacity-40 bg-opacity-90"
+            className="absolute left-10 top-0 box-border w-40 rounded border-2 border-black- border-opacity-40 bg-white bg-opacity-90"
           >
             <div className="flex flex-row justify-between">
-              <div className="m-1 font-semibold text-md">Tags</div>
-              <div className="flex flex-row justify-center mx-1 align-middle">
+              <div className="text-md m-1 font-semibold">Tags</div>
+              <div className="mx-1 flex flex-row justify-center align-middle">
                 <label htmlFor="all" className="mx-2 mt-[5px]">
                   Select All
                 </label>
@@ -97,8 +106,8 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
             </div>
             <div className="h-64 overflow-y-auto">
               {tags.map((tag, idx) => (
-                <>
-                  <label key={tag} className="flex items-center px-1 py-1 hover:bg-black-100">
+                <div key={tag}>
+                  <label className="flex items-center px-1 py-1 hover:bg-black-100">
                     <input
                       type="checkbox"
                       value={tag}
@@ -110,7 +119,7 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
                   </label>
                   {/* Render separator below all except for last */}
                   {idx !== tags.length - 1 && <hr />}
-                </>
+                </div>
               ))}
             </div>
           </div>
