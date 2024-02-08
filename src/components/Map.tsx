@@ -7,6 +7,7 @@ import InfoPanelControl from 'components/controls/InfoPanelControl'
 import ZoomControl from 'components/controls/ZoomControl'
 import TagControl from './controls/TagControl'
 import LegendControl from './controls/LegendControl'
+import {LatLngBoundsLiteral} from "leaflet";
 
 interface MapProps {
   apiKey: string
@@ -14,7 +15,7 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
-    const maxBounds = [
+    const maxBounds: LatLngBoundsLiteral = [
         // Southwest coordinate
         [-90, -180],
         // Northeast coordinate
