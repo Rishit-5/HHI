@@ -2,6 +2,8 @@ import React from 'react'
 import { useMap } from 'react-leaflet'
 
 import { Stakeholder } from 'types'
+import ExternalLinkSvg from 'assets/external_link.svg'
+
 interface InfoPanelControlProps {
   stakeholder: Stakeholder | null
   onClose: () => void
@@ -41,14 +43,19 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
 
           <div key={stakeholder.contact} className="px-6 py-10">
             <div className="mb-4 ">
-              <a
-                href={stakeholder.website}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-gradient-to-r from-black-900 to-black-600 bg-[length:0_0.1em] bg-[position:0_100%] bg-no-repeat text-2xl font-bold !text-black-700 transition-all duration-100 hover:bg-[length:100%_0.1em]"
-              >
-                {stakeholder.name}
-              </a>
+              <span className="inline">
+                <a
+                  href={stakeholder.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-gradient-to-r from-black-900 to-black-500 bg-[length:0_0.1em] bg-[position:0_100%] bg-no-repeat text-2xl font-bold !text-black-700 transition-all duration-150 hover:bg-[length:100%_0.1em]"
+                >
+                  {stakeholder.name}
+                </a>
+                <span className="inline-block align-text-bottom">
+                  <img src={ExternalLinkSvg} alt="link" className="ml-2 h-5" />
+                </span>
+              </span>
             </div>
             {driveFileId && <img className="mx-auto mb-5 w-80" src={`https://drive.google.com/thumbnail?id=${driveFileId}&sz=w1000`} alt={`${stakeholder.name} logo`} />}
             <div className="mb-6 text-sm text-black-800">{stakeholder.description}</div>
