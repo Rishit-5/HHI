@@ -7,11 +7,11 @@ interface StakeholderLayerProps {
   stakeholders: Stakeholder[]
   selectedStakeholder: Stakeholder | null
   setSelectedStakeholder: React.Dispatch<React.SetStateAction<Stakeholder | null>>
-  locationsServedMarkers: boolean
+  showLocationsServedMarkers: boolean
 }
 
 const StakeholderLayer = forwardRef<any, StakeholderLayerProps>(
-  ({ stakeholders, selectedStakeholder, setSelectedStakeholder, locationsServedMarkers }, ref) => {
+  ({ stakeholders, selectedStakeholder, setSelectedStakeholder, showLocationsServedMarkers }, ref) => {
     const map = useMap()
     const [isViewAdjusted, setIsViewAdjusted] = useState(true)
 
@@ -28,19 +28,14 @@ const StakeholderLayer = forwardRef<any, StakeholderLayerProps>(
     }, [map])
 
     const adjustView = (stakeholder: Stakeholder) => {
-      if (stakeholder.global) {
-        map.setView([0, 0], 2)
+      if (stakeholder.global || !showLocationsServedMarkers) {
+        map.flyTo([stakeholder.headquarterCoordinates.lat, stakeholder.headquarterCoordinates.lng], 5)
       } else {
-        // If the stakeholder has specific locations
-        var bounds
-        if (locationsServedMarkers) {
-          bounds = [
-            stakeholder.headquarterCoordinates,
-            ...(stakeholder.locationsServedCoordinates ? stakeholder.locationsServedCoordinates : []),
-          ].map((coord) => [coord.lat, coord.lng] as LatLngTuple)
-        } else {
-          bounds = [stakeholder.headquarterCoordinates].map((coord) => [coord.lat, coord.lng] as LatLngTuple)
-        }
+        // If we want to show stakeholder's specific locations
+        const bounds = [
+          stakeholder.headquarterCoordinates,
+          ...(stakeholder.locationsServedCoordinates ? stakeholder.locationsServedCoordinates : []),
+        ].map((coord) => [coord.lat, coord.lng] as LatLngTuple)
 
         map.flyToBounds(bounds, { padding: [150, 150], duration: 1, easeLinearity: 0.5 })
       }
@@ -76,7 +71,7 @@ const StakeholderLayer = forwardRef<any, StakeholderLayerProps>(
           {isViewAdjusted &&
             selectedStakeholder &&
             selectedStakeholder.locationsServed?.map((locationName, index) => {
-              if (selectedStakeholder.locationsServedCoordinates && locationsServedMarkers) {
+              if (selectedStakeholder.locationsServedCoordinates && showLocationsServedMarkers) {
                 return (
                   <CircleMarker
                     key={locationName}

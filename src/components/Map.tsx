@@ -35,7 +35,7 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
         selectedStakeholder={selectedStakeholder}
         setSelectedStakeholder={setSelectedStakeholder}
         ref={markersLayer}
-        locationsServedMarkers={false}
+        showLocationsServedMarkers={false}
       />
       <LegendControl selectedStakeholder={selectedStakeholder} />
 
