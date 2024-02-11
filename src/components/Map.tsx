@@ -7,7 +7,7 @@ import InfoPanelControl from 'components/controls/InfoPanelControl'
 import ZoomControl from 'components/controls/ZoomControl'
 import TagControl from './controls/TagControl'
 import LegendControl from './controls/LegendControl'
-import {LatLngBoundsLiteral} from "leaflet";
+import { LatLngBoundsLiteral } from 'leaflet'
 
 interface MapProps {
   apiKey: string
@@ -15,12 +15,12 @@ interface MapProps {
 }
 
 const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
-    const maxBounds: LatLngBoundsLiteral = [
-        // Southwest coordinate
-        [-90, -180],
-        // Northeast coordinate
-        [90, 180],
-    ];
+  const maxBounds: LatLngBoundsLiteral = [
+    // Southwest coordinate
+    [-90, -180],
+    // Northeast coordinate
+    [90, 180],
+  ]
   const [selectedStakeholder, setSelectedStakeholder] = useState<Stakeholder | null>(null)
   const markersLayer = useRef(null)
 
@@ -30,10 +30,16 @@ const Map: React.FC<MapProps> = ({ apiKey, stakeholders }) => {
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url={`https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${apiKey}`}
       />
-      <StakeholderLayer stakeholders={stakeholders} selectedStakeholder={selectedStakeholder} setSelectedStakeholder={setSelectedStakeholder} ref={markersLayer} />
-        <LegendControl selectedStakeholder={selectedStakeholder} />
+      <StakeholderLayer
+        stakeholders={stakeholders}
+        selectedStakeholder={selectedStakeholder}
+        setSelectedStakeholder={setSelectedStakeholder}
+        ref={markersLayer}
+        showLocationsServedMarkers={false}
+      />
+      <LegendControl selectedStakeholder={selectedStakeholder} />
 
-        <InfoPanelControl stakeholder={selectedStakeholder} onClose={() => setSelectedStakeholder(null)} />
+      <InfoPanelControl stakeholder={selectedStakeholder} onClose={() => setSelectedStakeholder(null)} />
 
       <SearchControl layerRef={markersLayer} />
       <TagControl stakeholders={stakeholders} layerRef={markersLayer} />
