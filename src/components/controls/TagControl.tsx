@@ -1,6 +1,7 @@
-import L from 'leaflet'
 import { useEffect, useRef, useState } from 'react'
+
 import Control from 'react-leaflet-custom-control'
+import L from 'leaflet'
 import { Stakeholder } from 'types'
 
 interface TagControlProps {
@@ -72,7 +73,7 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
     <Control prepend position="topleft">
       <div className="leaflet-bar relative rounded font-metropolis">
         <a
-          className="leaflet-control-zoom-in rounded pt-[2px]"
+          className="leaflet-control-zoom-in rounded"
           title={'Tags'}
           role="button"
           onClick={(e) => {
