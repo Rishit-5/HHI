@@ -108,7 +108,7 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
             <div className="h-64 overflow-y-auto">
               {tags.map((tag, idx) => (
                 <div key={tag}>
-                  <label className="hover:bg-tint-01 flex items-center px-1 py-1">
+                  <label className="hover:bg-tint-02 flex items-center px-1 py-1">
                     <input
                       type="checkbox"
                       value={tag}
@@ -119,7 +119,7 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
                     {tag}
                   </label>
                   {/* Render separator below all except for last */}
-                  {idx !== tags.length - 1 && <hr />}
+                  {idx !== tags.length - 1 && <hr className="text-tint-01" />}
                 </div>
               ))}
             </div>
