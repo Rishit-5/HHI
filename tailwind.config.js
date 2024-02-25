@@ -46,7 +46,7 @@ export default {
       },
       fontFamily: {
         merriweather: ['Merriweather', 'sans-serif'],
-        metropolis: ['proxima-nova', 'sans-serif'],
+        proxima_nova: ['proxima-nova', 'sans-serif'],
       },
     },
   },
