@@ -87,7 +87,7 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
         {isDropdownVisible && (
           <div
             ref={dropdownRef}
-            className="absolute left-10 top-0 box-border w-40 rounded border-2 border-black- border-opacity-40 bg-white bg-opacity-90"
+            className="bg-tint-02 border-shade-01 absolute left-10 top-0 box-border w-40 rounded border-2 border-opacity-40 bg-opacity-90"
           >
             <div className="flex flex-row justify-between">
               <div className="text-md m-1 font-semibold">Tags</div>
@@ -108,7 +108,7 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
             <div className="h-64 overflow-y-auto">
               {tags.map((tag, idx) => (
                 <div key={tag}>
-                  <label className="flex items-center px-1 py-1 hover:bg-black-100">
+                  <label className="hover:bg-tint-01 flex items-center px-1 py-1">
                     <input
                       type="checkbox"
                       value={tag}

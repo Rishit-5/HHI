@@ -30,14 +30,14 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
     <div
       className={`${
         stakeholder ? 'w-[400px]' : 'w-0'
-      } duration-400 !font-proxima-nova fixed left-0 z-[1000] box-border h-screen cursor-default overflow-y-auto bg-white bg-opacity-80 shadow-md transition-all duration-100`}
+      } duration-400 !font-proxima-nova bg-tint-02 fixed left-0 z-[1000] box-border h-screen cursor-default overflow-y-auto bg-opacity-80 shadow-md transition-all duration-100`}
       onMouseEnter={disableZoom}
       onMouseLeave={enableZoom}
     >
       {stakeholder && (
         <>
           <span
-            className="absolute right-6 top-6 h-4 w-4 cursor-pointer text-center text-2xl leading-4 text-black-900 transition delay-75 ease-in-out hover:scale-125"
+            className="text-shade-01 absolute right-6 top-6 h-4 w-4 cursor-pointer text-center text-2xl leading-4 transition delay-75 ease-in-out hover:scale-125"
             onClick={onClose}
           >
             &times;
@@ -50,7 +50,7 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
                   href={stakeholder.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-r from-black-900 to-black-500 bg-[length:0_0.1em] bg-[position:0_100%] bg-no-repeat text-2xl font-bold !text-black-700 transition-all duration-150 hover:bg-[length:100%_0.1em]"
+                  className="!text-shade-02 from-shade-01 to-shade-02 bg-gradient-to-r bg-[length:0_0.1em] bg-[position:0_100%] bg-no-repeat text-2xl font-bold transition-all duration-150 hover:bg-[length:100%_0.1em]"
                 >
                   {stakeholder.name}
                 </a>
@@ -67,28 +67,34 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
               />
             )}
             <div className="font-merriweather ">
-              <div className="mb-6 text-sm text-black-800">{stakeholder.description}</div>
-              <div className="mb-4 font-bold text-black-800">
+              <div className="text-shade-01 mb-6 text-sm">{stakeholder.description}</div>
+              <div className="text-shade-01 mb-4 font-bold">
                 <span className="font-proxima-nova">HEADQUARTERS:</span> <span className="text-sm font-normal">{stakeholder.headquarter}</span>
               </div>
               <div className="mb-4">
-                <span className="font-proxima-nova font-bold text-black-800">LOCATIONS SERVED:</span>
+                <span className="font-proxima-nova text-shade-01 font-bold">LOCATIONS SERVED:</span>
                 <div className="ml-2 mt-2">
                   {stakeholder.locationsServed?.map((location) => (
-                    <span key={location} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">
+                    <span
+                      key={location}
+                      className="font-proxima-nova text-shade-02 bg-tint-01 mb-2 mr-2 inline-block rounded-full px-3 py-1 font-semibold"
+                    >
                       {location}
                     </span>
                   ))}
                 </div>
               </div>
-              <div className="mb-4 font-bold text-black-800">
+              <div className="text-shade-01 mb-4 font-bold">
                 <span className="font-proxima-nova">CONTACT:</span> <span className="text-sm font-normal">{stakeholder.contact}</span>
               </div>
               <div className="mb-4">
-                <span className="font-proxima-nova font-bold text-black-800">TAGS:</span>
+                <span className="font-proxima-nova text-shade-01 font-bold">TAGS:</span>
                 <div className="ml-2 mt-2">
                   {stakeholder.tags?.map((tag) => (
-                    <span key={tag} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">
+                    <span
+                      key={tag}
+                      className="text-shade-02 font-proxima-nova bg-tint-01 mb-2 mr-2 inline-block rounded-full px-3 py-1 font-semibold"
+                    >
                       {tag}
                     </span>
                   ))}
