@@ -30,7 +30,7 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
     <div
       className={`${
         stakeholder ? 'w-[400px]' : 'w-0'
-      } duration-400 !font-proxima_nova fixed left-0 z-[1000] box-border h-screen cursor-default overflow-y-auto bg-white bg-opacity-80 shadow-md transition-all duration-100`}
+      } duration-400 !font-proxima-nova fixed left-0 z-[1000] box-border h-screen cursor-default overflow-y-auto bg-white bg-opacity-80 shadow-md transition-all duration-100`}
       onMouseEnter={disableZoom}
       onMouseLeave={enableZoom}
     >
@@ -69,10 +69,10 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
             <div className="font-merriweather ">
               <div className="mb-6 text-sm text-black-800">{stakeholder.description}</div>
               <div className="mb-4 font-bold text-black-800">
-                <span className="font-proxima_nova">HEADQUARTERS:</span> <span className="text-sm font-normal">{stakeholder.headquarter}</span>
+                <span className="font-proxima-nova">HEADQUARTERS:</span> <span className="text-sm font-normal">{stakeholder.headquarter}</span>
               </div>
               <div className="mb-4">
-                <span className="font-proxima_nova font-bold text-black-800">LOCATIONS SERVED:</span>
+                <span className="font-proxima-nova font-bold text-black-800">LOCATIONS SERVED:</span>
                 <div className="ml-2 mt-2">
                   {stakeholder.locationsServed?.map((location) => (
                     <span key={location} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">
@@ -82,10 +82,10 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
                 </div>
               </div>
               <div className="mb-4 font-bold text-black-800">
-                <span className="font-proxima_nova">CONTACT:</span> <span className="text-sm font-normal">{stakeholder.contact}</span>
+                <span className="font-proxima-nova">CONTACT:</span> <span className="text-sm font-normal">{stakeholder.contact}</span>
               </div>
               <div className="mb-4">
-                <span className="font-proxima_nova font-bold text-black-800">TAGS:</span>
+                <span className="font-proxima-nova font-bold text-black-800">TAGS:</span>
                 <div className="ml-2 mt-2">
                   {stakeholder.tags?.map((tag) => (
                     <span key={tag} className="mb-2 mr-2 inline-block rounded-full bg-black-100 px-3 py-1 font-semibold text-black-700">

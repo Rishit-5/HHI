@@ -71,7 +71,7 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
 
   return (
     <Control prepend position="topleft">
-      <div className="leaflet-bar font-proxima_nova relative rounded">
+      <div className="leaflet-bar font-proxima-nova relative rounded">
         <a
           className="leaflet-control-zoom-in rounded"
           title={'Tags'}
