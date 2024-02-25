@@ -87,7 +87,7 @@ const TagControl: React.FC<TagControlProps> = ({ layerRef, stakeholders }) => {
         {isDropdownVisible && (
           <div
             ref={dropdownRef}
-            className="bg-tint-02 border-shade-01 absolute left-10 top-0 box-border w-40 rounded border-2 border-opacity-40 bg-opacity-90"
+            className="border-shade-01 absolute left-10 top-0 box-border w-40 rounded border-2 border-opacity-40 bg-white bg-opacity-90"
           >
             <div className="flex flex-row justify-between">
               <div className="text-md m-1 font-semibold">Tags</div>

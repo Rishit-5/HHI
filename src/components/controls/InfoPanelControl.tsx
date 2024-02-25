@@ -37,7 +37,7 @@ const InfoPanelControl: React.FC<InfoPanelControlProps> = ({ stakeholder, onClos
       {stakeholder && (
         <>
           <span
-            className="text-shade-01 absolute right-6 top-6 h-4 w-4 cursor-pointer text-center text-2xl leading-4 transition delay-75 ease-in-out hover:scale-125"
+            className="text-shade-01 absolute right-6 top-6 h-4 w-4 cursor-pointer text-center text-2xl font-extrabold leading-4 transition delay-75 ease-in-out hover:scale-125"
             onClick={onClose}
           >
             &times;

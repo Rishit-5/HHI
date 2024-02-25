@@ -1,10 +1,13 @@
-/** @type {import('tailwindcss').Config} */
+import colors from 'tailwindcss/colors'
 
 /** Extended colors/fonts conforming to https://www.hsph.harvard.edu/communications-guide/ */
+
+/** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     colors: {
+      white: colors.white,
       crimson: '#A51C30',
       harvard: {
         'chan-gray': '#595859',
